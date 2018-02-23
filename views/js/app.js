@@ -24,7 +24,7 @@ $(document).ready(function() {
       $counter.text($newNumberOfQuestionsAnswered);
      }
      if ($numberOfQuestionsAnswered === 6) {
-      $progressBar.css('width', '99.5%');
+      $progressBar.css('width', '99%');
      }
      return $newProgress
    });
