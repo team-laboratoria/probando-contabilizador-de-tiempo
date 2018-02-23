@@ -198,40 +198,38 @@ nextQuestion.addEventListener('click', function () {
   }
 })
 
-$('.uploadcare--widget__button_type_open').on('click', function() {
-  console.log('Hola');
-});;
 
-// var mins = 00, segs, s, m;
+$(document).on('click', '.uploadcare--widget__button_type_open',function(event) {
+  var mins = 00, segs, s, m;
+  console.log('a');
+  console.log('click');
+  $('#segundos').empty();
+  var time = chosenQuestions[centinel].time;
+  $('#segundos').text(time);
+  // Corre tiempo
+  segs = time - 1;
+  m = setInterval('segundos()', 1000);
 
-// $('.uploadcare--widget__button_type_open').on('click', function () {
-//   console.log('click');
-//   $('#segundos').empty();
-//   var time = chosenQuestions[centinel].time;
-//   $('#segundos').text(time);
-//   // Corre tiempo
-//   segs = time - 1;
-//   m = setInterval('segundos()', 1000);
+  return $('.uploadcare--tab__content').append(`<div>Tiempo restante: ${segs}</div>`);
 
-//   // Probando tiempo en modal
-//   $('.uploadcare--tab__content').append('<div>Tiempo restante: </div>')
-// });
+});
+  function segundos() {
+    $('#segundos').html(segs);
+    if (segs == 0) {
+      var dm = clearInterval(m);
+      s = setInterval('minutos()', 1000);
+    }
+    segs--;
+  }
+  
+  function minutos() {
+    $('#minutos').html(mins);
+    if (mins == 0) {
+      location.reload();
+      var ds = clearInterval(s);
+    }
+    mins--;
+    console.log('Tiempo!');
+  }
 
-// function segundos() {
-//   $('#segundos').html(segs);
-//   if (segs == 0) {
-//     var dm = clearInterval(m);
-//     s = setInterval('minutos()', 1000);
-//   }
-//   segs--;
-// }
 
-// function minutos() {
-//   $('#minutos').html(mins);
-//   if (mins == 0) {
-//     location.reload();
-//     var ds = clearInterval(s);
-//   }
-//   mins--;
-//   console.log('Tiempo!');
-// }
